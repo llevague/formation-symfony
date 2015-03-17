@@ -10,7 +10,8 @@ REPERTOIRE_WWW="/var/www/formation-symfony-LLVNH"
 REPERTOIRE_JENKINS="/var/lib/jenkins/jobs/formation-symfony-LLVNH/workspace/"
 
 ## INSTALLATION SUR LE SERVEUR D'INTEGRATION
-CMD="rm -rf ${REPERTOIRE_WWW} ; "
+CMD="sudo -s ; "
+CMD="$CMD rm -rf ${REPERTOIRE_WWW} ; "
 CMD="$CMD mkdir ${REPERTOIRE_WWW} ; "
 CMD="$CMD cp -r ${REPERTOIRE_JENKINS}/* ${REPERTOIRE_WWW} ; "
 CMD="$CMD chown -R www-data:www-data ${REPERTOIRE_WWW} ; "
@@ -20,6 +21,7 @@ echo $CMD | ssh llevague@127.0.0.1
 
 
 ## UPDATE Schema Doctrine
+CMD="sudo -s ; "
 CMD="su www-data ; "
 CMD="$CMD cd  ${REPERTOIRE_JENKINS}/website ; "
 CMD="$CMD echo 'drop database formation' | mysql --user=formation --password=formation --host=db ; "
