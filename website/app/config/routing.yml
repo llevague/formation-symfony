@@ -1,0 +1,8 @@
+societe_application_mon:
+    resource: "@SocieteApplicationMonBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation

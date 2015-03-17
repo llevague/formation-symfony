@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Lazyprojet" default="build">
+    <property name="workspace" value="${basedir}" />
+    <property name="sourcedir" value="${basedir}/src" />
+    <property name="builddir" value="${workspace}/app/build" />
+    <property name="projectdir" value="${basedir}/.." />
+    <property name="integrationdir" value="${basedir}/../integration" />
+
+
+    <target name="build"
+            depends="prepare,vendors,lint,phploc,pdepend,phpcpd,phpmd-ci,phpcs-ci,phpdoc,phpunit,phpcb"/>
+
+    <!--
+    <target name="build-prod"
+            depends="build,prod-parameters"/>
+            -->
+
+    <target name="builddev"
+            depends="prepare,lint,phploc,pdepend,phpcpd,phpmd-ci,phpcs-ci,phpdoc,phpunit,phpcb"/>
+
+    <target name="build-parallel" depends="prepare,lint,tools-parallel,phpunit,phpcb"/>
+
+    <target name="tools-parallel" description="Run tools in parallel">
+        <parallel threadCount="2">
+            <sequential>
+                <antcall target="pdepend"/>
+                <antcall target="phpmd-ci"/>
+            </sequential>
+            <antcall target="phpcpd"/>
+            <antcall target="phpcs-ci"/>
+            <antcall target="phploc"/>
+            <antcall target="phpdoc"/>
+        </parallel>
+    </target>
+
+    <target name="clean" description="Cleanup build artifacts">
+        <delete dir="${integrationdir}/logs"/>
+    </target>
+
+    <target name="prepare" depends="clean" description="Prepare for build">
+        <mkdir dir="${integrationdir}/logs"/>
+    </target>
+
+    <target name="lint" description="Perform syntax check of sourcecode files">
+        <apply executable="php" failonerror="true">
+            <arg value="-l" />
+            <fileset dir="${sourcedir}">
+                <include name="**/*.php" />
+                <modified />
+            </fileset>
+            <fileset dir="${basedir}/src/">
+                <include name="**/*Test.php" />
+                <modified />
+            </fileset>
+        </apply>
+    </target>
+
+    <target name="phploc" description="Measure project size using PHPLOC">
+        <exec executable="phploc">
+            <arg value="--log-csv" />
+            <arg value="${integrationdir}/logs/phploc.csv" />
+            <arg path="${sourcedir}" />
+        </exec>
+    </target>
+
+    <target name="pdepend" description="Calculate software metrics using PHP_Depend">
+        <exec executable="pdepend">
+            <arg value="--jdepend-xml=${integrationdir}/logs/jdepend.xml" />
+            <arg value="--jdepend-chart=${integrationdir}/logs/dependencies.svg" />
+            <arg value="--overview-pyramid=${integrationdir}/logs/overview-pyramid.svg" />
+            <arg path="${sourcedir}" />
+        </exec>
+    </target>
+
+    <target name="phpmd" description="Perform project mess detection using PHPMD and print human readable output. Intended for usage on the command line before committing.">
+        <exec executable="phpmd">
+            <arg path="${basedir}/src" />
+            <arg value="text" />
+            <arg value="${integrationdir}/rules/phpmd/phpmd.xml" />
+        </exec>
+    </target>
+
+    <target name="phpmd-ci" description="Perform project mess detection using PHPMD creating a log file for the continuous integration server">
+        <exec executable="phpmd">
+            <arg path="${sourcedir}" />
+            <arg value="xml" />
+            <arg value="${integrationdir}/rules/phpmd/phpmd.xml" />
+            <arg value="--reportfile" />
+            <arg value="${integrationdir}/logs/pmd.xml" />
+        </exec>
+    </target>
+
+    <target name="phpcs" description="Find coding standard violations using PHP_CodeSniffer and print human readable output. Intended for usage on the command line before committing.">
+        <exec executable="phpcs">
+            <arg value="--standard=${integrationdir}/rules/phpcs/Symfony2/ruleset.xml" />
+            <arg path="${sourcedir}" />
+        </exec>
+    </target>
+
+    <target name="phpcs-ci" description="Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server">
+        <exec executable="phpcs" output="/dev/null">
+            <arg value="--report=checkstyle" />
+            <arg value="--report-file=${integrationdir}/logs/checkstyle.xml" />
+            <arg value="--standard=${integrationdir}/rules/phpcs/Symfony2/ruleset.xml" />
+            <arg path="${sourcedir}" />
+        </exec>
+    </target>
+
+    <target name="phpcpd" description="Find duplicate code using PHPCPD">
+        <exec executable="phpcpd">
+            <arg value="--log-pmd" />
+            <arg value="${integrationdir}/logs/pmd-cpd.xml" />
+            <arg path="${sourcedir}" />
+        </exec>
+    </target>
+
+    <target name="phpdoc" description="Generate API documentation using phpDox">
+        <exec executable="phpdoc">
+            <arg line="-d '${sourcedir}' -t '${integrationdir}/docs'" />
+        </exec>
+    </target>
+
+    <target name="phpunit" description="Run unit tests with PHPUnit">
+        <exec executable="phpunit" failonerror="false" >
+            <arg value="-d memory_limit=1G" />
+            <arg value="-c" />
+            <arg path="${basedir}/app/phpunit.xml.dist" />
+            <arg value="--bootstrap" />
+            <arg path="${basedir}/app/bootstrap.php.cache" />
+            <arg value="--coverage-html" />
+            <arg path="${integrationdir}/logs/coverage" />
+            <arg value="--coverage-clover" />
+            <arg path="${integrationdir}/logs/coverage.xml" />
+            <arg value="--log-junit" />
+            <arg path="${integrationdir}/logs/junit.xml" />
+            <arg path="${basedir}/src" />
+        </exec>
+    </target>
+
+
+    <target name="phpcb" description="Aggregate tool output with PHP_CodeBrowser">
+        <exec executable="phpcb">
+            <arg value="--log" />
+            <arg path="${integrationdir}/logs" />
+            <arg value="--source" />
+            <arg path="${sourcedir}" />
+            <arg value="--output" />
+            <arg path="${integrationdir}/logs/code-browser" />
+        </exec>
+    </target>
+
+    <target name="vendors" description="Update vendors">
+        <exec executable="composer" failonerror="true">
+            <arg value="update" />
+        </exec>
+    </target>
+
+    <!--
+    <target name="prod-parameters" description="Copy parameters">
+        <exec executable="cp" failonerror="true">
+            <arg path="app/config/parameters_prod.yml" />
+            <arg path="app/config/parameters.yml" />
+        </exec>
+    </target>
+    -->
+
+</project>

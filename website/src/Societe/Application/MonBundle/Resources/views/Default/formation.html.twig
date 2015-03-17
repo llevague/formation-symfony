@@ -1,0 +1,22 @@
+{% extends "AcmeDemoBundle::layout.html.twig" %}
+
+{% block title "Symfony - Demos" %}
+
+{% block content_header '' %}
+
+{% block content %}
+Formation
+
+<ul>
+    <li>
+        code de la formation : {{ formation.id }}
+    </li>
+    <li>
+        Nom de la formation : {{ formation.name }}
+    </li>
+    <li>
+        Lieu de la formation : {{ formation.salleAffectee.nom }}
+    </li>
+</ul>
+Salle disponible : {{ formation.salleAffectee.nom }}
+{% endblock %}

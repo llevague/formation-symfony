@@ -1,0 +1,4 @@
+_demo:
+    resource: "@SocieteApplicationMonBundle/Controller/DefaultController.php"
+    type:     annotation
+    prefix:   /monbundle
