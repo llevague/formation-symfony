@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="2.3.0">
+<file name="/var/www/formation/website/src/AppBundle/Tests/Controller/DefaultControllerTest.php">
+ <error line="7" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+ <error line="9" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+</file>
+<file name="/var/www/formation/website/src/AppBundle/Controller/DefaultController.php">
+ <error line="8" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+ <error line="12" column="6" severity="error" message="Missing @return tag in function comment" source="Symfony2.Commenting.FunctionComment.MissingReturn"/>
+</file>
+<file name="/var/www/formation/website/src/AppBundle/AppBundle.php">
+ <error line="7" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+</file>
+<file name="/var/www/formation/website/src/Societe/Application/MonBundle/Tests/Controller/DefaultControllerTest.php">
+ <error line="7" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+ <error line="9" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+</file>
+<file name="/var/www/formation/website/src/Societe/Application/MonBundle/SocieteApplicationMonBundle.php">
+ <error line="7" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+</file>
+<file name="/var/www/formation/website/src/Societe/Application/MonBundle/Repository/SalleRepository.php">
+ <error line="7" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+ <error line="7" column="48" severity="error" message="Opening brace of a class must be on the line after the definition" source="PEAR.Classes.ClassDeclaration.OpenBraceNewLine"/>
+ <error line="8" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+ <error line="8" column="42" severity="error" message="Opening brace should be on a new line" source="Generic.Functions.OpeningFunctionBraceBsdAllman.BraceOnSameLine"/>
+ <error line="10" column="9" severity="error" message="Missing blank line before return statement" source="Symfony2.Formatting.BlankLineBeforeReturn"/>
+</file>
+<file name="/var/www/formation/website/src/Societe/Application/MonBundle/Entity/Formation.php">
+ <error line="11" column="17" severity="error" message="Opening brace of a class must be on the line after the definition" source="PEAR.Classes.ClassDeclaration.OpenBraceNewLine"/>
+ <error line="36" column="5" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+ <error line="36" column="5" severity="error" message="No scope modifier specified for function &quot;__construct&quot;" source="Symfony2.Scope.MethodScope.Missing"/>
+</file>
+<file name="/var/www/formation/website/src/Societe/Application/MonBundle/Entity/Salle.php">
+ <error line="12" column="13" severity="error" message="Opening brace of a class must be on the line after the definition" source="PEAR.Classes.ClassDeclaration.OpenBraceNewLine"/>
+ <error line="36" column="5" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+ <error line="36" column="5" severity="error" message="No scope modifier specified for function &quot;__construct&quot;" source="Symfony2.Scope.MethodScope.Missing"/>
+</file>
+<file name="/var/www/formation/website/src/Societe/Application/MonBundle/Controller/DefaultController.php">
+ <error line="10" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+ <error line="12" column="5" severity="error" message="Doc comment for parameter &quot;$name&quot; missing" source="Symfony2.Commenting.FunctionComment.MissingParamTag"/>
+ <error line="15" column="6" severity="error" message="Missing @return tag in function comment" source="Symfony2.Commenting.FunctionComment.MissingReturn"/>
+ <error line="21" column="5" severity="error" message="Doc comment for parameter &quot;$id&quot; missing" source="Symfony2.Commenting.FunctionComment.MissingParamTag"/>
+ <error line="26" column="42" severity="error" message="Opening brace should be on a new line" source="Generic.Functions.OpeningFunctionBraceBsdAllman.BraceOnSameLine"/>
+ <error line="29" column="6" severity="error" message="Closing brace indented incorrectly; expected 4 spaces, found 5" source="PEAR.WhiteSpace.ScopeClosingBrace.Indent"/>
+</file>
+<file name="/var/www/formation/website/src/Societe/Application/MonBundle/Service/SalleService.php">
+ <error line="16" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+ <error line="16" column="20" severity="error" message="Opening brace of a class must be on the line after the definition" source="PEAR.Classes.ClassDeclaration.OpenBraceNewLine"/>
+ <error line="26" column="5" severity="error" message="No scope modifier specified for function &quot;__construct&quot;" source="Symfony2.Scope.MethodScope.Missing"/>
+ <error line="34" column="42" severity="error" message="Opening brace should be on a new line" source="Generic.Functions.OpeningFunctionBraceBsdAllman.BraceOnSameLine"/>
+</file>
+<file name="/var/www/formation/website/src/Societe/Application/MonBundle/Service/FormationService.php">
+ <error line="8" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+ <error line="20" column="5" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+ <error line="20" column="5" severity="error" message="No scope modifier specified for function &quot;__construct&quot;" source="Symfony2.Scope.MethodScope.Missing"/>
+ <error line="26" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+ <error line="26" column="31" severity="error" message="Opening brace should be on a new line" source="Generic.Functions.OpeningFunctionBraceBsdAllman.BraceOnSameLine"/>
+ <error line="30" column="5" severity="error" message="Doc comment for parameter &quot;$id&quot; missing" source="Symfony2.Commenting.FunctionComment.MissingParamTag"/>
+ <error line="31" column="8" severity="error" message="Missing parameter name" source="Symfony2.Commenting.FunctionComment.MissingParamName"/>
+ <error line="34" column="39" severity="error" message="Opening brace should be on a new line" source="Generic.Functions.OpeningFunctionBraceBsdAllman.BraceOnSameLine"/>
+ <error line="40" column="39" severity="error" message="Expected 1 space after closing parenthesis; found &quot;\n        &quot;" source="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseParenthesis"/>
+</file>
+<file name="/var/www/formation/website/src/Acme/DemoBundle/Tests/Controller/DemoControllerTest.php">
+ <error line="7" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+ <error line="9" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+ <error line="18" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+</file>
+<file name="/var/www/formation/website/src/Acme/DemoBundle/EventListener/ControllerListener.php">
+ <error line="9" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+ <error line="13" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+ <error line="18" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+</file>
+<file name="/var/www/formation/website/src/Acme/DemoBundle/DependencyInjection/AcmeDemoExtension.php">
+ <error line="10" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+ <error line="12" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+ <error line="18" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+</file>
+<file name="/var/www/formation/website/src/Acme/DemoBundle/Twig/Extension/DemoExtension.php">
+ <error line="7" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+ <error line="12" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+ <error line="17" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+ <error line="32" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+</file>
+<file name="/var/www/formation/website/src/Acme/DemoBundle/Form/ContactType.php">
+ <error line="8" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+ <error line="10" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+ <error line="16" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+</file>
+<file name="/var/www/formation/website/src/Acme/DemoBundle/Controller/DemoController.php">
+ <error line="14" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+ <error line="19" column="6" severity="error" message="Missing @return tag in function comment" source="Symfony2.Commenting.FunctionComment.MissingReturn"/>
+ <error line="25" column="5" severity="error" message="Doc comment for parameter &quot;$name&quot; missing" source="Symfony2.Commenting.FunctionComment.MissingParamTag"/>
+ <error line="28" column="6" severity="error" message="Missing @return tag in function comment" source="Symfony2.Commenting.FunctionComment.MissingReturn"/>
+ <error line="34" column="5" severity="error" message="Doc comment for parameter &quot;$request&quot; missing" source="Symfony2.Commenting.FunctionComment.MissingParamTag"/>
+ <error line="37" column="6" severity="error" message="Missing @return tag in function comment" source="Symfony2.Commenting.FunctionComment.MissingReturn"/>
+</file>
+<file name="/var/www/formation/website/src/Acme/DemoBundle/Controller/SecuredController.php">
+ <error line="17" column="5" severity="error" message="Doc comment for parameter &quot;$request&quot; missing" source="Symfony2.Commenting.FunctionComment.MissingParamTag"/>
+ <error line="20" column="6" severity="error" message="Missing @return tag in function comment" source="Symfony2.Commenting.FunctionComment.MissingReturn"/>
+ <error line="51" column="5" severity="error" message="Doc comment for parameter &quot;$name&quot; missing" source="Symfony2.Commenting.FunctionComment.MissingParamTag"/>
+ <error line="55" column="6" severity="error" message="Missing @return tag in function comment" source="Symfony2.Commenting.FunctionComment.MissingReturn"/>
+ <error line="61" column="5" severity="error" message="Doc comment for parameter &quot;$name&quot; missing" source="Symfony2.Commenting.FunctionComment.MissingParamTag"/>
+ <error line="65" column="6" severity="error" message="Missing @return tag in function comment" source="Symfony2.Commenting.FunctionComment.MissingReturn"/>
+</file>
+<file name="/var/www/formation/website/src/Acme/DemoBundle/Controller/WelcomeController.php">
+ <error line="7" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+ <error line="9" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+</file>
+<file name="/var/www/formation/website/src/Acme/DemoBundle/AcmeDemoBundle.php">
+ <error line="7" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+</file>
+</checkstyle>
+
