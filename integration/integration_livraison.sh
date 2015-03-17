@@ -7,12 +7,12 @@
 #
 ##########################################################################
 REPERTOIRE_WWW="/data/htdocs"
-REPERTOIRE_JENKINS="/data/webapps/jenkins.univ-rennes1.fr/conf/jobs/formation"
+REPERTOIRE_JENKINS="/data/jenkins/workspace/formation-symfony_INT_gv"
 
 ## INSTALLATION SUR LE SERVEUR D'INTEGRATION
 #CMD="rm -rf ${REPERTOIRE_WWW} ; "
 #CMD="$CMD mkdir ${REPERTOIRE_WWW} ; "
-CMD="scp -p -r ${REPERTOIRE_JENKINS} tomcat@vmjava-pdevq1/${REPERTOIRE_WWW} ; "
+scp -p -r ${REPERTOIRE_JENKINS} apache@vmjava-pdevq1:${REPERTOIRE_WWW};
 #CMD="$CMD chown -R www-data:www-data ${REPERTOIRE_WWW} ; "
 #CMD="$CMD chmod -R u+rw ${REPERTOIRE_WWW} ; "
 
@@ -20,12 +20,12 @@ CMD="scp -p -r ${REPERTOIRE_JENKINS} tomcat@vmjava-pdevq1/${REPERTOIRE_WWW} ; "
 
 
 ## UPDATE Schema Doctrine
-#CMD="su www-data ; "
-#CMD="$CMD cd  ${REPERTOIRE_JENKINS}/website ; "
-#CMD="$CMD echo 'drop database matrix' | mysql --user=root --password=matrix --host=db ; "
-#CMD="$CMD php app/console doctrine:database:create ; "
-#CMD="$CMD php app/console doctrine:schema:update --force ; "
-#CMD="$CMD php app/console doctrine:fixtures:load --fixtures=src/ICert/Matrix/RestAPIBundle/Tests/DataFixtures ; "
+CMD="su www-data ; "
+CMD="$CMD cd  ${REPERTOIRE_JENKINS}/nwebsite ; "
+CMD="$CMD echo 'drop database formation' | mysql --user=formation --password=formation --host=db ; "
+CMD="$CMD php app/console doctrine:database:create ; "
+CMD="$CMD php app/console doctrine:schema:update --force ; "
+CMD="$CMD php app/console doctrine:fixtures:load --fixtures=src/ICert/Matrix/RestAPIBundle/Tests/DataFixtures ; "
 #
 #echo $CMD | ssh root@127.0.0.1
 
@@ -41,10 +41,3 @@ CMD="scp -p -r ${REPERTOIRE_JENKINS} tomcat@vmjava-pdevq1/${REPERTOIRE_WWW} ; "
 #CMD="docker restart db web"
 #
 #echo $CMD | ssh root@127.0.0.1
-
-
-
-
-
-
-
