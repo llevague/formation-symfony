@@ -12,7 +12,7 @@ REPERTOIRE_JENKINS="/data/webapps/jenkins.univ-rennes1.fr/conf/jobs/formation"
 ## INSTALLATION SUR LE SERVEUR D'INTEGRATION
 #CMD="rm -rf ${REPERTOIRE_WWW} ; "
 #CMD="$CMD mkdir ${REPERTOIRE_WWW} ; "
-CMD="scp -r ${REPERTOIRE_JENKINS} tomcat@vmjava-pdevq1/${REPERTOIRE_WWW} ; "
+CMD="scp -p -r ${REPERTOIRE_JENKINS} tomcat@vmjava-pdevq1/${REPERTOIRE_WWW} ; "
 #CMD="$CMD chown -R www-data:www-data ${REPERTOIRE_WWW} ; "
 #CMD="$CMD chmod -R u+rw ${REPERTOIRE_WWW} ; "
 
