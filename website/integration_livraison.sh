@@ -7,7 +7,7 @@
 #
 ##########################################################################
 REPERTOIRE_WWW="/var/www/formation-symfony-LLVNH"
-REPERTOIRE_JENKINS="/var/lib/jenkins/jobs/formation-symfony-LLVNH/workspace/"
+REPERTOIRE_JENKINS="/var/lib/jenkins/jobs/formation-symfony-LLVNH/workspace"
 
 ## INSTALLATION SUR LE SERVEUR D'INTEGRATION
 CMD="sudo -s ; "
@@ -22,9 +22,9 @@ echo $CMD | ssh llevague@127.0.0.1
 
 ## UPDATE Schema Doctrine
 CMD="sudo -s ; "
-CMD="su www-data ; "
+CMD="$CMD su www-data ; "
 CMD="$CMD cd  ${REPERTOIRE_JENKINS}/website ; "
-CMD="$CMD echo 'drop database formation' | mysql --user=formation --password=formation --host=db ; "
+CMD="$CMD echo 'drop database formation' | mysql --user=formation --password=formation --host=localhost ; "
 CMD="$CMD php app/console doctrine:database:create ; "
 CMD="$CMD php app/console doctrine:schema:update --force ; "
 CMD="$CMD php app/console doctrine:fixtures:load --fixtures=src/Societe/Application/MonBundle/Tests/DataFixtures ; "
