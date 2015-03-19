@@ -39,21 +39,25 @@ class FormationService {
     }
 
     /**
+     * @param integer $id
      * @return Formation
      */
     public function getFormation($id){
         $repositoryFormation = $this->em->getRepository('Societe\Application\MonBundle\Entity\Formation');
         $formation = $repositoryFormation->findOneBy(array("id"=>$id));
-        $tmp = $formation->getSalleAffectee();
-        if (empty($tmp)) {
-            /** @var Salle $salle */
-            $salle = $this->salleService->getSalleDisponible();
-            $formation->setSalleAffectee($salle);
-            $formation->getSalleAffectee()->setDisponible(false);
-            $this->em->persist($formation);
-            $this->em->flush();
+        if (!empty($formation)) {
+            $tmp = $formation->getSalleAffectee();
+            if (empty($tmp)) {
+                /** @var Salle $salle */
+                $salle = $this->salleService->getSalleDisponible();
+                $formation->setSalleAffectee($salle);
+                $formation->getSalleAffectee()->setDisponible(false);
+                $this->em->persist($formation);
+                $this->em->flush();
+            }
+            return $formation;
         }
-        return $formation;
+        return new Formation(1, "TATA", new Salle(1, "TUTU", true));
     }
 
 }

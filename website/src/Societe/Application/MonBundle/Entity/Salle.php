@@ -43,12 +43,11 @@ class Salle
      */
     private $disponible;
 
-
-    /**
-     *
-     */
-    public function __construct()
+    function __construct($id, $nom, $disponible)
     {
+        $this->id = $id;
+        $this->nom = $nom;
+        $this->disponible = $disponible;
     }
 
     /**

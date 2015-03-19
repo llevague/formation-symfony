@@ -45,12 +45,11 @@ class Formation
      */
     private $salleAffectee;
 
-    /**
-     *
-     */
-    public function __construct()
+    function __construct($id, $name, $salleAffectee)
     {
-
+        $this->name = $name;
+        $this->id = $id;
+        $this->salleAffectee = $salleAffectee;
     }
 
     /**
