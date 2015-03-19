@@ -27,12 +27,14 @@ class LoadFormationData extends AbstractFixture implements OrderedFixtureInterfa
      */
     function load(ObjectManager $manager)
     {
-        $salle = new Salle();
-        $salle->setId(1);
+        $salle = $this->getReference('salle1');
 
         $formation = new Formation();
+        $formation->setId(1);
         $formation->setName("Formation 1");
         $formation->setSalleAffectee($salle);
+        $manager->persist($formation);
+        $manager->flush();
     }
 
     /**

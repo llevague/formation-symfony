@@ -27,14 +27,19 @@ class LoadSalleData extends AbstractFixture implements OrderedFixtureInterface {
     function load(ObjectManager $manager)
     {
         $salle = new Salle();
+        $salle->setId(1);
         $salle->setNom("Salle 1");
         $salle->setDisponible(false);
         $manager->persist($salle);
 
+        $this->addReference("salle1", $salle);
+
         $salle = new Salle();
+        $salle->setId(2);
         $salle->setNom("Salle 2");
         $salle->setDisponible(true);
         $manager->persist($salle);
+        $manager->flush();
     }
 
     /**
