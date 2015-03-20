@@ -12,6 +12,7 @@
         <service id="serviceSalle" class="Societe\Application\MonBundle\Service\SalleService">
             <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
+        <service id="my.oauth_aware.user_provider.service"
+                 class="Societe\Application\MonBundle\Service\AuthService" />
     </services>
 </container>
-

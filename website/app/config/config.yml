@@ -76,3 +76,34 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# CAS
+#be_simple_sso_auth:
+#    admin_sso:
+#        protocol:
+#            id: cas
+#            version: 2
+#        server:
+#            id: cas
+#            login_url: https://sso-cas.univ-rennes1.fr/login
+#            logout_url: https://sso-cas.univ-rennes1.fr/logout
+#            validation_url: https://sso-cas.univ-rennes1.fr/serviceValidate
+
+hwi_oauth:
+    firewall_name: secured_area
+    resource_owners:
+        my_github:
+            type:                github
+            client_id:           9f2d01a3ceb5d4e0db6a
+            client_secret:       00a54ce382f880257a5cd724e2bc7117f5894382
+
+be_simple_soap:
+    clients:
+        harpege:
+            # required
+            wsdl: 'http://ws-ur1-harpege.univ-rennes1.fr/ur1/cxf/HarpegeService?wsdl'
+
+            # classmap (optional)
+#            classmap:
+#                type_name: "\Societe\Application\MonBundle\Dto\StructureDTO"
+
