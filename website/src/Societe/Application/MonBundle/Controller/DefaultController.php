@@ -3,6 +3,11 @@
 namespace Societe\Application\MonBundle\Controller;
 
 use GuzzleHttp\Command\Guzzle\GuzzleClient;
+use GuzzleHttp\Message\FutureResponse;
+use GuzzleHttp\Ring\Future\BaseFutureTrait;
+use GuzzleHttp\Ring\Future\FutureInterface;
+use GuzzleHttp\Ring\Future\FutureValue;
+use React\Promise\FulfilledPromise;
 use Societe\Application\MonBundle\Service\FormationService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -26,18 +31,23 @@ class DefaultController extends Controller
         #return array('name' => $name);
         $client = new \GuzzleHttp\Client();
         $req = $client->createRequest('GET','https://ws-catapp-esup-prod.univ-rennes1.fr/domains/OUTCOM', ['future' => true]);
-        $titles =
-            $client->send($req)->then(function($resp) use ($client) {
-                $apps = $resp->json()['applications'];
-                array_map(function($codeApp) use ($client) {
-                    $req = $client->createRequest('GET','https://ws-catapp-esup-prod.univ-rennes1.fr/applications/' . $codeApp,
-                        ['future' => true]);
-                    $client->send($req)->then(function($resp) {
-                        return $resp->json()['titles'];
-                    });
-                }, $apps);
-
-            });
+        $titles = array();
+        $client
+            ->send($req)
+//            ->then(function($resp) use ($client) {
+//                $apps = $resp->json()['applications'];
+//                array_map(function($codeApp) use ($client) {
+//                    $req = $client->createRequest('GET','https://ws-catapp-esup-prod.univ-rennes1.fr/applications/' . $codeApp,
+//                        ['future' => true]);
+//                    $client->send($req)->then(function($resp) {
+//                        return $resp->json()['titles'];
+//                    });
+//                }, $apps);
+//
+//            })
+            ->then(function($resp) { return $resp; })
+            ->done(function($resp) use ($titles) { foreach ($resp as $title) array_push($titles, $title); });
+        var_dump($titles);
         return array('titles'=> $titles);
     }
 
